@@ -1,0 +1,15 @@
+.*
+!/.gitignore
+anaconda3
+cbtool
+snap
+stream
+tailbench*
+*.deb
+*.out
+Anaconda3-2022.10-Linux-x86_64.sh
+rapl
+res-usage/[io|perf|rapl]*.txt
+res-usage/ioparse
+res-usage/perfparse
+res-usage/raplparse
