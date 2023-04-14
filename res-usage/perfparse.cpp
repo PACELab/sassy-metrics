@@ -35,6 +35,14 @@ int main (int argc, char* argv[]) {
             streampos = infile.tellg();
             continue;
         }
+        // if pid is a kernel thread, skip
+        // kernel threads can contain any of the following in the pid: kworker, ksoftirqd, kthrotld, kswapd, kauditd, kpsmoused, kintegrityd, kblockd, kthreadd, kdevtmpfs, rcu_, 
+        if (pid.find("kworker") != string::npos || pid.find("ksoftirqd") != string::npos || pid.find("kthrotld") != string::npos || pid.find("kswapd") != string::npos || pid.find("kauditd") != string::npos || pid.find("kpsmoused") != string::npos || pid.find("kintegrityd") != string::npos || pid.find("kblockd") != string::npos || pid.find("kthreadd") != string::npos || pid.find("kdevtmpfs") != string::npos || pid.find("rcu_") != string::npos) {
+            getline(infile, flush);
+            streampos = infile.tellg();
+            continue;
+        }
+
         pid = pid.substr(pid.find_last_of('-') + 1);
         count.erase(remove(count.begin(), count.end(), ','), count.end());
         string str = to_string(time) + "," + pid + "," + count + "," + event;

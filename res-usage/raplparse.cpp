@@ -33,7 +33,7 @@ int main (int argc,char* argv[]) {
         string str = to_string(i) + "," + a + "," + b;
         getline(infile, flush);
         getline(infile, flush);
-        // getline(infile, flush);
+        getline(infile, flush);
         outfile << str << endl;
         i++;
     }
